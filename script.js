@@ -1,25 +1,22 @@
+var orangedata = [10, 30 ,50 ,100];
+
 var canvas = d3
-    .select('body')
+    .select('.orangecontainers')
     .append('svg')
-    .attr('width',700).attr('height',700);
+    .attr('width',1024).attr('height',768);
 
-var rectangle = canvas
-    .append('rect')
-    .attr('x',100).attr('y',100)
-    .attr('width',300)
-    .attr('height',300)
-    .attr('fill','green');
-
-
-var circle = canvas
-    .append('circle')
-    .attr('cx',300).attr('cy',100)
-    .attr('r',50)
-    .attr('fill','blue');
-
-var line = canvas
-    .append('line')
-    .attr('x1',250).attr('y1',250)
-    .attr('x2',300).attr('y2',100)
-    .attr('stroke','white')
-    .attr('stroke-width',3);    
+var orange = canvas
+    .selectAll('circle')
+    .data(orangedata)
+    .enter()
+        .append('circle')
+        .attr('fill','orange')
+        .attr('cx',function(d, i){
+            return d+ i*100;
+        })
+        .attr('cy',function(d,i){
+            return d
+        })
+        .attr('r',function(d, i){
+            return d;
+        })
